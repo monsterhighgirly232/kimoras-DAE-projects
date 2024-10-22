@@ -1,0 +1,7 @@
+username ='princesscookie'
+nickname ='princess cookie da realest'
+age = 1000
+bank/accountbalance = 200.039
+lottery/account = 900000000
+
+print("your account balance is", bank/accountbalance )
