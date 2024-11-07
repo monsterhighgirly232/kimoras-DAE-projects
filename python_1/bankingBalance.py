@@ -6,8 +6,8 @@ nickname = 'princess cookie da realest'
 age = 1000
 
 # Store the bank account balance (float) and lottery winnings (float)
-bank_account_balance = 200.039
-lottery_account = 900000000
+bank_account_balance = 2
+lottery_account = 0
 
 # Function to print the current account balance
 def print_account_balance(balance):
