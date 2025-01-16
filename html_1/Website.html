@@ -8,5 +8,18 @@
     <body>
         <a href="pictures.html">click to get started</a>
         <h1> <p >Welcome To <br>KimKim's<br> Playhouse</p></h1>
+        <p>Enjoy the music</p>
+        <button onclick="playMusic()">Play Music</button>
+<audio id="background-music">
+    <source src="Hector El Father - Esta Noche De Travesura (1).mp3" type="audio/mpeg">
+    Your browser does not support the audio tag.
+</audio>
+<!-- JavaScript function to play the music -->
+<script>
+    function playMusic() {
+        const audio = document.getElementById("background-music");
+        audio.play();
+    }
+</script>
     </body>
 </html>
