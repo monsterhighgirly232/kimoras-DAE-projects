@@ -1,0 +1,29 @@
+body {
+    background-image:url("stars.png");
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size: 100% 100%;
+    /* background-size:cover; */
+    font-size: 50px;
+}
+
+/* Style for the link */
+a {
+    position: fixed; /* Keeps it fixed in the viewport even when scrolling */
+    bottom: 90px; /* Distance from the bottom of the screen */
+    right: 20px; /* Distance from the right of the screen */
+    font-size: 20px; /* Adjust the font size */
+    text-decoration: none; /* Removes the underline */
+    color: #000; /* Link color */
+}
+
+a:hover {
+    color: #f00; /* Changes color when hovered over */
+}
+
+
+
+
+
+
+

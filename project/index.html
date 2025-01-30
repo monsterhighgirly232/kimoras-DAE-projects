@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StyleHub - Fashion Marketplace</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container header-container">
+            <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <i data-lucide="menu"></i>
+            </button>
+            
+            <h1>StyleHub</h1>
+            
+            <nav class="main-nav" role="navigation">
+                <ul class="category-list">
+                    <li><button class="category-btn" data-category="streetwear">Streetwear</button></li>
+                    <li><button class="category-btn" data-category="y2k">Y2K</button></li>
+                    <li><button class="category-btn" data-category="vintage">Vintage</button></li>
+                    <li><button class="category-btn" data-category="gothic">Gothic</button></li>
+                </ul>
+            </nav>
+
+            <div class="header-icons">
+                <a href="/search" aria-label="Search">
+                    <i data-lucide="search"></i>
+                </a>
+                <a href="/cart" aria-label="Shopping cart">
+                    <i data-lucide="shopping-bag"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-content">
+                <div class="sidebar-section">
+                    <h3>Categories</h3>
+                    <div class="category-buttons">
+                        <button class="sidebar-btn" data-category="streetwear">Streetwear</button>
+                        <button class="sidebar-btn" data-category="y2k">Y2K</button>
+                        <button class="sidebar-btn" data-category="vintage">Vintage</button>
+                        <button class="sidebar-btn" data-category="gothic">Gothic</button>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3>Retailers</h3>
+                    <div class="retailer-buttons">
+                        <button class="sidebar-btn" data-retailer="shein">SHEIN</button>
+                        <button class="sidebar-btn" data-retailer="amazon">Amazon</button>
+                        <button class="sidebar-btn" data-retailer="fashionnova">Fashion Nova</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main" role="main">
+            <div class="filters">
+                <h2 id="category-title">All Styles</h2>
+                <div class="retailer-filters">
+                    <button class="retailer-btn" data-retailer="shein">SHEIN</button>
+                    <button class="retailer-btn" data-retailer="amazon">Amazon</button>
+                    <button class="retailer-btn" data-retailer="fashionnova">Fashion Nova</button>
+                </div>
+            </div>
+
+            <div class="product-grid" id="product-grid">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>About StyleHub</h3>
+                <p>Your one-stop destination for fashion from multiple retailers.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <ul>
+                    <li><a href="/instagram">Instagram</a></li>
+                    <li><a href="/twitter">Twitter</a></li>
+                    <li><a href="/facebook">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
