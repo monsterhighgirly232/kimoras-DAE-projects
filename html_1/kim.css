@@ -11,7 +11,7 @@ body {
 }
 
 header {
-    background-color: rgba(0, 0, 0, 0.8);
+    
     padding: 20px;
     text-align: center;
     font-size: 30px;
@@ -39,7 +39,7 @@ nav ul li a:hover {
 }
 
 button {
-    background-color: red;
+    background-color: rgb(255, 0, 234);
     color: white;
     padding: 10px 20px;
     border: none;
@@ -63,10 +63,41 @@ button:hover {
 }
 
 footer {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(160, 150, 150, 0.8);
     text-align: center;
     padding: 10px;
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+#musicControls {
+    position: fixed;  /* Keeps it in place when scrolling */
+    top: 10px;        /* Moves it to the top */
+    right: 10px;      /* Moves it to the right */
+    background: rgba(0, 0, 0, 0.7);  /* Dark background with transparency */
+    padding: 10px;  
+    border-radius: 10px;  /* Rounded corners */
+    display: flex;
+    flex-direction: column;  /* Stack items vertically */
+    align-items: center;
+    z-index: 1000;  /* Makes sure it’s always on top */
+}
+
+#playerButtons {
+    display: flex;
+    gap: 5px;  /* Space between buttons */
+}
+
+#musicControls button {
+    font-size: 12px;  /* Make buttons smaller */
+    padding: 5px 8px;
+    border: none;
+    background: white;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#musicControls button:hover {
+    background: lightgray;
 }
