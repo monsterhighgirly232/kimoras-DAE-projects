@@ -17,6 +17,7 @@
 <div id="musicControls">
     <div id="playerButtons">
         <button onclick="prevSong()">⏮</button>
+        <button id="playPauseBtn">Play</button>
         <button onclick="nextSong()">⏭</button>
         <button onclick="toggleShuffle()">🔀 <span id="shuffleStatus">OFF</span></button>
         <button onclick="toggleRepeat()">🔁 <span id="repeatStatus">OFF</span></button>
@@ -31,11 +32,12 @@
         <h1>Welcome To KimKim's Playhouse</h1>
         <nav>
             <ul>
-                <li><a href="#" onclick="loadGallery(); return false;">Gallery</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" onclick="loadPage('home'); return false;">Home</a></li>
+                <li><a href="#" onclick="loadPage('gallery'); return false;">Gallery</a></li>
+                <li><a href="#" onclick="loadPage('about'); return false;">About</a></li>
             </ul>
         </nav>
+        
     </header>
     
     <main>
@@ -46,17 +48,14 @@
 
             <!-- Playlist Controls -->
             <br>
-            <button onclick="prevSong()">⏮ Previous</button>
-            <button onclick="nextSong()">Next ⏭</button>
-            <button onclick="toggleShuffle()">Shuffle: <span id="shuffleStatus">OFF</span></button>
-            <button onclick="toggleRepeat()">Repeat: <span id="repeatStatus">OFF</span></button>
+            
 
             <!-- Playlist -->
             <ul id="playlist">
                 <!-- Songs will be dynamically added here -->
             </ul>
         </section>
-        
+        <iframe id="galleryFrame" src="" style="width: 100%; height: 600px; border: none; display: none;"></iframe>
         <section id="about">
             <h2>About</h2>
             <p>KimKim's Playhouse is a fun and engaging place to explore music and visuals!</p>
@@ -73,65 +72,101 @@
     document.getElementById("galleryFrame").style.display = "block"; // Show iframe
 }
 
-        function loadPage(page) {
-        // Hide all sections
-        document.getElementById("home").style.display = "none";
-        document.getElementById("gallery").style.display = "none";
+function loadPage(page) {
+    // Hide all sections
+    document.getElementById("home").style.display = "none";
+    document.getElementById("gallery").style.display = "none";
+    document.getElementById("about").style.display = "none";
 
-        // Show the selected section
-        document.getElementById(page).style.display = "block";
-    }
+    // Show the selected section
+    document.getElementById(page).style.display = "block";
+}
+
 
     // 🎵 Song Playlist
-    const songs = [
-        { name: "Song 1", src: "music.mp3" },
-        { name: "Song 2", src: "chun-li.mp3" },
-        { name: "Song 3", src: "umbrella.mp3" },
-        { name: "Song 4", src: "diamonds.mp3" },
-        { name: "Song 5", src: "obsesion.mp3" },
-        { name: "Song 6", src: "pillsmpotions.mp3" }
-    ];
+const songs = [
+    { name: "Song 1", src: "music.mp3" },
+    { name: "Song 2", src: "chun-li.mp3" },
+    { name: "Song 3", src: "umbrella.mp3" },
+    { name: "Song 4", src: "diamonds.mp3" },
+    { name: "Song 5", src: "obsesion.mp3" },
+    { name: "Song 6", src: "pillsmpotions.mp3" }
+];
 
-    let currentSongIndex = 0;
-    let isShuffle = false;
-    let isRepeat = false;
+let currentSongIndex = 0;
+let isShuffle = false;
+let isRepeat = false;
 
-    const audioPlayer = document.getElementById("audioPlayer");
+const audioPlayer = document.getElementById("audioPlayer");
+const playPauseBtn = document.getElementById("playPauseBtn");
+const shuffleStatus = document.getElementById("shuffleStatus");
+const repeatStatus = document.getElementById("repeatStatus");
 
-    function playSong(index) {
-        if (audioPlayer.src !== songs[index].src) {
-            currentSongIndex = index;
-            audioPlayer.src = songs[currentSongIndex].src;
-            audioPlayer.play();
-        }
+// 🎵 Load and Play Song
+function playSong(index) {
+    currentSongIndex = index;
+    audioPlayer.src = songs[currentSongIndex].src;
+    audioPlayer.play();
+    playPauseBtn.textContent = "Pause"; // Update button text
+}
+
+// ▶️ Play/Pause Toggle
+playPauseBtn.addEventListener("click", function () {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playPauseBtn.textContent = "Pause";
+    } else {
+        audioPlayer.pause();
+        playPauseBtn.textContent = "Play";
     }
+});
 
-    // Keep playing music even when switching pages
-    audioPlayer.onended = function () {
-        nextSong();
-    };
-
-    function nextSong() {
-        if (isRepeat) {
-            playSong(currentSongIndex); // Repeat current song
-        } else if (isShuffle) {
-            playSong(getRandomSongIndex());
-        } else {
-            currentSongIndex = (currentSongIndex + 1) % songs.length;
-            playSong(currentSongIndex);
-        }
+// ⏭ Next Song
+function nextSong() {
+    if (isRepeat) {
+        playSong(currentSongIndex);
+    } else if (isShuffle) {
+        playSong(getRandomSongIndex());
+    } else {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+        playSong(currentSongIndex);
     }
+}
 
-    function getRandomSongIndex() {
-        let randomIndex;
-        do {
-            randomIndex = Math.floor(Math.random() * songs.length);
-        } while (randomIndex === currentSongIndex);
-        return randomIndex;
-    }
-
-    // Keep first song playing at page load
+// ⏮ Previous Song
+function prevSong() {
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
     playSong(currentSongIndex);
+}
+
+// 🔀 Toggle Shuffle Mode
+function toggleShuffle() {
+    isShuffle = !isShuffle;
+    shuffleStatus.textContent = isShuffle ? "ON" : "OFF";
+}
+
+// 🔁 Toggle Repeat Mode
+function toggleRepeat() {
+    isRepeat = !isRepeat;
+    repeatStatus.textContent = isRepeat ? "ON" : "OFF";
+}
+
+// 🎵 Auto-Play Next Song When Current Ends
+audioPlayer.onended = function () {
+    nextSong();
+};
+
+// 🎵 Pick a Random Song (for Shuffle)
+function getRandomSongIndex() {
+    let randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * songs.length);
+    } while (randomIndex === currentSongIndex);
+    return randomIndex;
+}
+
+// 🚀 Auto-play First Song on Load
+playSong(currentSongIndex);
     </script>
    <div id="content"></div>
    <nav>
@@ -142,14 +177,21 @@
    </nav>
    
    <script>
-       function loadPage(page) {
-        // Hide all sections
-        document.getElementById("home").style.display = "none";
-        document.getElementById("gallery").style.display = "none";
+     function loadPage(page) {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("galleryFrame").style.display = "none";
 
-        // Show the selected section
+    if (page === "gallery") {
+        document.getElementById("galleryFrame").src = "pictures.html";
+        document.getElementById("galleryFrame").style.display = "block";
+
+        // Keep user at the gallery section instead of scrolling up
+        document.getElementById("galleryFrame").scrollIntoView({ behavior: "smooth" });
+    } else {
         document.getElementById(page).style.display = "block";
     }
+}
+
    </script>
 
     
