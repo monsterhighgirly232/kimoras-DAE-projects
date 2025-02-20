@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KimKim's Playhouse</title>
+    <link rel="stylesheet" href="kim.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome To KimKim's Playhouse</h1>
+        <nav>
+            <ul>
+                <li><a href="pictures.html">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section>
+            <p>Enjoy the music</p>
+            <button onclick="playMusic()">Play Music</button>
+            <audio id="background-music">
+                <source src="music.mp3" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+        </section>
+        
+        <section id="about">
+            <h2>About</h2>
+            <p>KimKim's Playhouse is a fun and engaging place to explore music and visuals!</p>
+            <!-- <img src="monsterhigh2.png" alt="Monster High Theme" class="picture"> -->
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 KimKim's Playhouse. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        function playMusic() {
+            const audio = document.getElementById("background-music");
+            audio.play();
+        }
+    </script>
+</body>
+</html>

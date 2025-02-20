@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KimKim's Fashion Gallery</title>
+    <link rel="stylesheet" href="kim2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css"/>
+</head>
+<body>
+    <header>
+        <h1>KimKim's Fashion Gallery</h1>
+        <nav>
+            <ul>
+                <li><a href="Website.html">Home</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section class="gallery-intro">
+            <p class="double">Enjoy guys!!😍</p>
+        </section>
+        
+        <section class="category">
+            <h2>Women's Fashion</h2>
+            <div class="carousel">
+                <img src="women1.jpg" alt="Women's Fashion 1">
+                <img src="women2.jpg" alt="Women's Fashion 2">
+                <img src="women3.jpg" alt="Women's Fashion 3">
+            </div>
+        </section>
+        
+        <section class="category">
+            <h2>Men's Fashion</h2>
+            <div class="carousel">
+                <img src="men1.jpg" alt="Men's Fashion 1">
+                <img src="men2.jpg" alt="Men's Fashion 2">
+                <img src="men3.jpg" alt="Men's Fashion 3">
+            </div>
+        </section>
+        
+        <section class="category">
+            <h2>Children's Fashion</h2>
+            <div class="carousel">
+                <img src="children1.jpg" alt="Children's Fashion 1">
+                <img src="children2.jpg" alt="Children's Fashion 2">
+                <img src="children3.jpg" alt="Children's Fashion 3">
+            </div>
+        </section>
+        
+        <section class="category">
+            <h2>Accessories</h2>
+            <div class="carousel">
+                <img src="accessory1.jpg" alt="Accessory 1">
+                <img src="accessory2.jpg" alt="Accessory 2">
+                <img src="accessory3.jpg" alt="Accessory 3">
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 KimKim's Fashion Gallery. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        $(document).ready(function(){
+            $('.carousel').slick({
+                dots: true,
+                infinite: true,
+                speed: 500,
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+        });
+    </script>
+</body>
+</html>
