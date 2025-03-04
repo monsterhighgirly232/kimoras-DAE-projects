@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JavaScript (for responsive features) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <div id="content">
@@ -29,17 +36,25 @@
 </head>
 <body>
     <header>
-        <h1>Welcome To KimKim's Playhouse</h1>
-        <nav>
-            <ul>
-                <li><a href="home.html" onclick="loadPage('home'); return false;"class="btn">Home</a></li>
-                <li><a href="gallery.html" onclick="loadPage('gallery'); return false;"class="btn">Gallery</a></li>
-                <li><a href="about.html" onclick="loadPage('about'); return false;"class="btn">About</a></li>
-               
-            </ul>
+        <h1 class="custom-heading">Welcome To KimKim's Playhouse</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li><a href="home.html" onclick="loadPage('home'); return false;"class="btn">Home</a></li>
+                        <li><a href="gallery.html" onclick="loadPage('gallery'); return false;"class="btn">Gallery</a></li>
+                        <li><a href="about.html" onclick="loadPage('about'); return false;"class="btn">About</a></li>
+         
+                    </ul>
+                </div>
+            </div>
         </nav>
-        
     </header>
+    
     
     <main>
         <iframe id="galleryFrame" src="" style="width: 100%; height: 600px; border: none; display: none;"></iframe>
@@ -91,7 +106,14 @@ const songs = [
     { name: "Song 3", src: "umbrella.mp3" },
     { name: "Song 4", src: "diamonds.mp3" },
     { name: "Song 5", src: "Obsesión.mp3" },
-    { name: "Song 6", src: "pillsmpotions.mp3" }
+    { name: "Song 6", src: "pillsmpotions.mp3"},
+    { name: "Song 7", src: "readyornot.mp3" },
+    { name: "Song 8", src: "strangers.mp3" },
+    { name: "Song 9", src: "canttakemyeyesoffyou.mp3" },
+    { name: "Song 10", src: "bodakyellow.mp3" },
+    { name: "Song 11", src: "mesaytara.mp3" },
+    { name: "Song 8", src: "murdershewrote.mp3" },
+    { name: "Song 12", src: "hotgirl.mp3" },
 ];
 
 let currentSongIndex = 0;

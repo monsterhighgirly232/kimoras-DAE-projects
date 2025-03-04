@@ -142,3 +142,16 @@ footer {
 .btn:hover {
     background-color: #ff1493; /* Darker pink */
 }
+.navbar {
+    max-width: 800px; /* Adjust the width as needed */
+    margin: 0 auto;  /* Centers the navbar */
+    border-radius: 10px; /* Optional: Rounds the edges */
+}
+.custom-heading {
+    font-size: 80px; /* Increase the text size */
+    font-family: 'Pacifico', cursive; /* Change font (Google Fonts Example) */
+    text-align: center; /* Center the text */
+    color: #e3dbdf; /* Change text color (Pink) */
+    text-shadow: 3px 3px 5px rgba(223, 27, 241, 0.3); /* Adds a shadow effect */
+    margin-top: 20px; /* Adds spacing */
+}
