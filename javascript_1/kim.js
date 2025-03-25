@@ -7,6 +7,19 @@ function playMusic() {
         console.error("Audio element not found!");
     }
 }
+const audioPlayer = document.getElementById("audioPlayer");
+const playPauseBtn = document.getElementById("playPauseBtn");
+
+playPauseBtn.addEventListener("click", function () {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playPauseBtn.textContent = "Pause";
+    } else {
+        audioPlayer.pause();
+        playPauseBtn.textContent = "Play";
+    }
+});
+
 
 // 📸 Load Gallery Page
 function loadGallery() {
@@ -133,5 +146,27 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // 🚀 Auto-play First Song on Load
-    playSong(currentSongIndex);
+   // ✅ Load the first song on page load
+function loadFirstSong() {
+    audioPlayer.src = songs[currentSongIndex].src;
+    audioPlayer.load(); // Ensure the player loads the song
+}
+
+// ✅ Play or Pause Toggle (Fixing Play Button)
+playPauseBtn.addEventListener("click", function () {
+    if (!audioPlayer.src) {
+        loadFirstSong(); // Load a song if none is set
+    }
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playPauseBtn.textContent = "Pause";
+    } else {
+        audioPlayer.pause();
+        playPauseBtn.textContent = "Play";
+    }
+});
+
+// ✅ Load the first song when the page loads
+loadFirstSong();
+
 });
