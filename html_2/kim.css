@@ -1,0 +1,160 @@
+body {
+    background-image: url("stars.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    
+    padding: 20px;
+    text-align: center;
+    font-size: 30px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 22px;
+}
+
+nav ul li a:hover {
+    color: red;
+}
+
+button {
+    background-color: rgb(255, 0, 234);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: darkred;
+}
+
+.picture {
+    background-image: url("monsterhigh2.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    margin: 20px auto;
+    width: 50%;
+    height: 300px;
+}
+/* Centering the navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center the buttons */
+    gap: 15px; /* Space between buttons */
+}
+
+/* Style for the buttons */
+nav button {
+    background-color: #ff69b4; /* Pink */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+/* Hover effect */
+nav button:hover {
+    background-color: #ff1493; /* Darker pink */
+}
+
+footer {
+    background-color: rgba(160, 150, 150, 0.8);
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+#musicControls {
+    position: fixed;  /* Keeps it in place when scrolling */
+    top: 10px;        /* Moves it to the top */
+    right: 10px;      /* Moves it to the right */
+    background: rgba(0, 0, 0, 0.7);  /* Dark background with transparency */
+    padding: 10px;  
+    border-radius: 10px;  /* Rounded corners */
+    display: flex;
+    flex-direction: column;  /* Stack items vertically */
+    align-items: center;
+    z-index: 1000;  /* Makes sure it’s always on top */
+}
+
+#playerButtons {
+    display: flex;
+    gap: 5px;  /* Space between buttons */
+}
+
+#musicControls button {
+    font-size: 12px;  /* Make buttons smaller */
+    padding: 5px 8px;
+    border: none;
+    background: white;
+    color: black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#musicControls button:hover {
+    background: lightgray;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #ff69b4; /* Pink */
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #ff1493; /* Darker pink */
+}
+.navbar {
+    max-width: 800px; /* Adjust the width as needed */
+    margin: 0 auto;  /* Centers the navbar */
+    border-radius: 10px; /* Optional: Rounds the edges */
+}
+.custom-heading {
+    font-size: 80px; /* Increase the text size */
+    font-family: 'Pacifico', cursive; /* Change font (Google Fonts Example) */
+    text-align: center; /* Center the text */
+    color: #e3dbdf; /* Change text color (Pink) */
+    text-shadow: 3px 3px 5px rgba(223, 27, 241, 0.3); /* Adds a shadow effect */
+    margin-top: 20px; /* Adds spacing */
+}
+body {
+    background-color: transparent !important;
+}
