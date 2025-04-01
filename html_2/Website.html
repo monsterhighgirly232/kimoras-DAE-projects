@@ -48,7 +48,8 @@
                     <ul class="navbar-nav">
                         <li><a href="home.html" onclick="loadPage('home'); return false;"class="btn">Home</a></li>
                         <li><a href="gallery.html" onclick="loadPage('gallery'); return false;"class="btn">Gallery</a></li>
-                        <li><a href="about.html" class="btn">About</a></li>
+                        <li><a href="pages/about.html" onclick="loadPage('about'); return false;">About</a></li>
+
 
                     </ul>
                 </div>
@@ -59,6 +60,8 @@
     
     <main>
         <iframe id="galleryFrame" src="" style="width: 100%; height: 600px; border: none; display: none;"></iframe>
+        <iframe id="aboutFrame" src="" style="width: 100%; height: 600px; border: none; display: none;"></iframe>
+
         <section>
             
 
@@ -72,7 +75,7 @@
                 <!-- Songs will be dynamically added here -->
             </ul>
         </section>
-        <iframe id="galleryFrame" src="" style="width: 100%; height: 600px; border: none; display: none;"></iframe>
+
         <section id="about">
             <h2>About</h2>
             <p>KimKim's Playhouse is a fun and engaging place to explore music and visuals!</p>
@@ -92,13 +95,21 @@
 function loadPage(page) {
     // Hide all sections
     document.getElementById("home").style.display = "none";
-    document.getElementById("gallery").style.display = "none";
-    document.getElementById("about").style.display = "none";
+    document.getElementById("galleryFrame").style.display = "none";
+    document.getElementById("aboutFrame").style.display = "none";
 
-    // Show the selected section
-    document.getElementById(page).style.display = "block";
+    if (page === "gallery") {
+        document.getElementById("galleryFrame").src = "pictures.html";
+        document.getElementById("galleryFrame").style.display = "block";
+        document.getElementById("galleryFrame").scrollIntoView({ behavior: "smooth" });
+    } else if (page === "about") {
+        document.getElementById("aboutFrame").src = "about.html";
+        document.getElementById("aboutFrame").style.display = "block";
+        document.getElementById("aboutFrame").scrollIntoView({ behavior: "smooth" });
+    } else {
+        document.getElementById(page).style.display = "block";
+    }
 }
-
 
     // 🎵 Song Playlist
 const songs = [
