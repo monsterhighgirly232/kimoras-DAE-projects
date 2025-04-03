@@ -48,8 +48,7 @@
                     <ul class="navbar-nav">
                         <li><a href="home.html" onclick="loadPage('home'); return false;"class="btn">Home</a></li>
                         <li><a href="gallery.html" onclick="loadPage('gallery'); return false;"class="btn">Gallery</a></li>
-                        <li><a href="pages/about.html" onclick="loadPage('about'); return false;">About</a></li>
-
+                        <li><a href="aboutme.html" onclick="loadPage('aboutme'); return false;" class="btn">About</a></li>
 
                     </ul>
                 </div>
@@ -57,10 +56,18 @@
         </nav>
     </header>
     
+<script>
+    function showAbout() {
+        document.getElementById("aboutFrame").src = "aboutme.html";
+        document.getElementById("aboutFrame").style.display = "block";
+    }
+</script>
+
+
     
     <main>
         <iframe id="galleryFrame" src="" style="width: 100%; height: 600px; border: none; display: none;"></iframe>
-        <iframe id="aboutFrame" src="" style="width: 100%; height: 600px; border: none; display: none;"></iframe>
+        <iframe id="aboutFrame" style="width:100%; height:600px; border:none; display:none;"></iframe>
 
         <section>
             
@@ -76,11 +83,7 @@
             </ul>
         </section>
 
-        <section id="about">
-            <h2>About</h2>
-            <p>KimKim's Playhouse is a fun and engaging place to explore music and visuals!</p>
-            <!-- <img src="monsterhigh2.png" alt="Monster High Theme" class="picture"> -->
-        </section>
+        
     </main>
     
     <footer>
@@ -90,6 +93,10 @@
         function loadGallery() {
     document.getElementById("galleryFrame").src = "pictures.html"; // Load gallery page
     document.getElementById("galleryFrame").style.display = "block"; // Show iframe
+}
+function loadgallery() {
+    document.getElementById("aboutFrame").src = "aboutme.html"; // Load gallery page
+    document.getElementById("aboutFrame").style.display = "block"; // Show iframe
 }
 
 function loadPage(page) {
@@ -130,6 +137,11 @@ const songs = [
     { name: "Song 15", src: "nogames.mp3" },
     { name: "Song 16", src: "callmemaybe.mp3" },
     { name: "Song 17", src: "plentysun.mp3" },
+    { name: "Song 18", src: "siunavez.mp3" },
+    { name: "Song 19", src: "icouldfall.mp3" },
+    { name: "Song 20", src: "bidibidibumbum.mp3" },
+    { name: "Song 21", src: "nomequeda.mp3" },
+    
 ];
 
 let currentSongIndex = 0;

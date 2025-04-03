@@ -42,8 +42,8 @@ function loadPage(page) {
         document.getElementById("galleryFrame").src = "gallery.html"; // Make sure the file exists
         document.getElementById("galleryFrame").style.display = "block";
         document.getElementById("galleryFrame").scrollIntoView({ behavior: "smooth" });
-    } else if (page === "about") {
-        document.getElementById("aboutFrame").src = "about.html"; // Make sure this file exists
+    } else if (page === "aboutme") {
+        document.getElementById("aboutFrame").src = "aboutme.html"; // Make sure this file exists
         document.getElementById("aboutFrame").style.display = "block";
         document.getElementById("aboutFrame").scrollIntoView({ behavior: "smooth" });
     } else {
