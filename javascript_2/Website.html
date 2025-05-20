@@ -256,5 +256,38 @@ playSong(currentSongIndex);
     </script>
     
     <script src="kim.js"></script>
+    <script>
+        // ✅ Define named constants
+        const MESSAGE_DELAY = 3000; // 3 seconds
+        const HIDE_DELAY = 5000;    // 5 seconds
+        const MESSAGE_TEXT = "You're amazing! 💖 Thanks for visiting!";
+      
+        // Create a surprise message element
+        const surpriseMessage = document.createElement("div");
+        surpriseMessage.textContent = MESSAGE_TEXT; // use the constant here
+        surpriseMessage.style.position = "fixed";
+        surpriseMessage.style.bottom = "20px";
+        surpriseMessage.style.right = "20px";
+        surpriseMessage.style.backgroundColor = "#ffd1dc";
+        surpriseMessage.style.color = "#333";
+        surpriseMessage.style.padding = "15px 20px";
+        surpriseMessage.style.borderRadius = "20px";
+        surpriseMessage.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+        surpriseMessage.style.fontWeight = "bold";
+        surpriseMessage.style.zIndex = "999";
+      
+        // Show the message after the constant delay
+        const showTimeout = setTimeout(() => {
+          document.body.appendChild(surpriseMessage);
+      
+          // Hide it after the hide delay
+          const hideTimeout = setTimeout(() => {
+            surpriseMessage.remove();
+            clearTimeout(hideTimeout);
+          }, HIDE_DELAY);
+      
+        }, MESSAGE_DELAY);
+      </script>
+      
 </body>
 </html>
