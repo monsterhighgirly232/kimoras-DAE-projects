@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Bootstrap JavaScript (for responsive features) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div id="content">
+        <section id="home">
+    <title>KimKim's Playhouse</title>
+    <p>Enjoy the music!!</p>
+    <section id="gallery" style="display: none;">
+        <h2>Gallery</h2>
+        <p>Here are some cool pictures!</p>
+        <img src="example-image.jpg" alt="Example">
+    </section>
+    <!-- Keep this outside #content so it persists -->
+    <audio id="audioPlayer" controls></audio>
+</audio>
+<div id="musicControls">
+    <div id="playerButtons">
+        <button onclick="prevSong()">⏮</button>
+        <button id="playPauseBtn">Play</button>
+        <button onclick="nextSong()">⏭</button>
+        <button onclick="toggleShuffle()">🔀 <span id="shuffleStatus">OFF</span></button>
+        <button onclick="toggleRepeat()">🔁 <span id="repeatStatus">OFF</span></button>
+    </div>
+</section>
+    <link rel="stylesheet" href="kim.css">
+</head>
+<body>
+    
+
+    <header>
+        <h1 class="custom-heading">Welcome To KimKim's Playhouse</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li><a href="home.html" onclick="loadPage('home'); return false;"class="btn">Home</a></li>
+                        <li><a href="gallery.html" onclick="loadPage('gallery'); return false;"class="btn">Gallery</a></li>
+                        <li><a href="aboutme.html" onclick="loadPage('aboutme'); return false;" class="btn">About</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+<script>
+    function showAbout() {
+        document.getElementById("aboutFrame").src = "aboutme.html";
+        document.getElementById("aboutFrame").style.display = "block";
+    }
+</script>
+
+
+    
+    <main>
+        <iframe id="galleryFrame" src="" style="width: 100%; height: 600px; border: none; display: none;"></iframe>
+        <iframe id="aboutFrame" style="width:100%; height:600px; border:none; display:none;"></iframe>
+
+        <section>
+            
+
+
+            <!-- Playlist Controls -->
+            <br>
+            
+
+            <!-- Playlist -->
+            <ul id="playlist">
+                <!-- Songs will be dynamically added here -->
+            </ul>
+        </section>
+
+        
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 KimKim's Playhouse. All rights reserved.</p>
+    </footer>
+    <script>
+        function loadGallery() {
+    document.getElementById("galleryFrame").src = "pictures.html"; // Load gallery page
+    document.getElementById("galleryFrame").style.display = "block"; // Show iframe
+}
+function loadgallery() {
+    document.getElementById("aboutFrame").src = "aboutme.html"; // Load gallery page
+    document.getElementById("aboutFrame").style.display = "block"; // Show iframe
+}
+
+function loadPage(page) {
+    // Hide all sections
+    document.getElementById("home").style.display = "none";
+    document.getElementById("galleryFrame").style.display = "none";
+    document.getElementById("aboutFrame").style.display = "none";
+
+    if (page === "gallery") {
+        document.getElementById("galleryFrame").src = "pictures.html";
+        document.getElementById("galleryFrame").style.display = "block";
+        document.getElementById("galleryFrame").scrollIntoView({ behavior: "smooth" });
+    } else if (page === "about") {
+        document.getElementById("aboutFrame").src = "about.html";
+        document.getElementById("aboutFrame").style.display = "block";
+        document.getElementById("aboutFrame").scrollIntoView({ behavior: "smooth" });
+    } else {
+        document.getElementById(page).style.display = "block";
+    }
+}
+
+    // 🎵 Song Playlist
+const songs = [
+    { name: "Song 1", src: "music.mp3" },
+    { name: "Song 2", src: "chun-li.mp3" },
+    { name: "Song 3", src: "umbrella.mp3" },
+    { name: "Song 4", src: "diamonds.mp3" },
+    { name: "Song 5", src: "Obsesión.mp3" },
+    { name: "Song 6", src: "pillsmpotions.mp3"},
+    { name: "Song 7", src: "allaroundme.mp3" },
+    { name: "Song 8", src: "readyornot.mp3" },
+    { name: "Song 9", src: "strangers.mp3" },
+    { name: "Song 10", src: "canttakemyeyesoffyou.mp3" },
+    { name: "Song 11", src: "bodakyellow.mp3" },
+    { name: "Song 12", src: "joanna.mp3" },
+    { name: "Song 13", src: "murdershewrote.mp3" },
+    { name: "Song 14", src: "hotgirl.mp3" },
+    { name: "Song 15", src: "nogames.mp3" },
+    { name: "Song 16", src: "callmemaybe.mp3" },
+    { name: "Song 17", src: "plentysun.mp3" },
+    { name: "Song 18", src: "siunavez.mp3" },
+    { name: "Song 19", src: "icouldfall.mp3" },
+    { name: "Song 20", src: "bidibidibumbum.mp3" },
+    { name: "Song 21", src: "nomequeda.mp3" },
+    { name: "Song 22", src: "obsessed.mp3" },
+    { name: "Song 23", src: "myall.mp3" },
+    
+];
+
+let currentSongIndex = 0;
+let isShuffle = false;
+let isRepeat = false;
+
+const audioPlayer = document.getElementById("audioPlayer");
+const playPauseBtn = document.getElementById("playPauseBtn");
+const shuffleStatus = document.getElementById("shuffleStatus");
+const repeatStatus = document.getElementById("repeatStatus");
+
+// 🎵 Load and Play Song
+function playSong(index) {
+    currentSongIndex = index;
+    audioPlayer.src = songs[currentSongIndex].src;
+    audioPlayer.play();
+    playPauseBtn.textContent = "Pause"; // Update button text
+}
+
+// ▶️ Play/Pause Toggle
+playPauseBtn.addEventListener("click", function () {
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playPauseBtn.textContent = "Pause";
+    } else {
+        audioPlayer.pause();
+        playPauseBtn.textContent = "Play";
+    }
+});
+
+// ⏭ Next Song
+function nextSong() {
+    if (isRepeat) {
+        playSong(currentSongIndex);
+    } else if (isShuffle) {
+        playSong(getRandomSongIndex());
+    } else {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+        playSong(currentSongIndex);
+    }
+}
+
+// ⏮ Previous Song
+function prevSong() {
+    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+    playSong(currentSongIndex);
+}
+
+// 🔀 Toggle Shuffle Mode
+function toggleShuffle() {
+    isShuffle = !isShuffle;
+    shuffleStatus.textContent = isShuffle ? "ON" : "OFF";
+}
+
+// 🔁 Toggle Repeat Mode
+function toggleRepeat() {
+    isRepeat = !isRepeat;
+    repeatStatus.textContent = isRepeat ? "ON" : "OFF";
+}
+
+// 🎵 Auto-Play Next Song When Current Ends
+audioPlayer.onended = function () {
+    nextSong();
+};
+
+// 🎵 Pick a Random Song (for Shuffle)
+function getRandomSongIndex() {
+    let randomIndex;
+    do {
+        randomIndex = Math.floor(Math.random() * songs.length);
+    } while (randomIndex === currentSongIndex);
+    return randomIndex;
+}
+
+// 🚀 Auto-play First Song on Load
+playSong(currentSongIndex);
+    </script>
+   <div id="content"></div>
+   <nav>
+    <nav>
+        <a href="#" onclick="loadPage('home')">Home</a>
+        <a href="#" onclick="loadPage('gallery')">Gallery</a>
+    </nav>
+   </nav>
+   
+   <script>
+     function loadPage(page) {
+    document.getElementById("home").style.display = "none";
+    document.getElementById("galleryFrame").style.display = "none";
+
+    if (page === "gallery") {
+        document.getElementById("galleryFrame").src = "pictures.html";
+        document.getElementById("galleryFrame").style.display = "block";
+
+        // Keep user at the gallery section instead of scrolling up
+        document.getElementById("galleryFrame").scrollIntoView({ behavior: "smooth" });
+    } else {
+        document.getElementById(page).style.display = "block";
+    }
+}
+
+   </script>
+
+    
+    <script>
+        function playMusic() {
+            const audio = document.getElementById("background-music");
+            audio.play();
+        }
+    </script>
+    
+    <script src="kim.js"></script>
+    <script>
+        // ✅ Define named constants
+        const MESSAGE_DELAY = 3000; // 3 seconds
+        const HIDE_DELAY = 5000;    // 5 seconds
+        const MESSAGE_TEXT = "You're amazing! 💖 Thanks for visiting!";
+      
+        // Create a surprise message element
+        const surpriseMessage = document.createElement("div");
+        surpriseMessage.textContent = MESSAGE_TEXT; // use the constant here
+        surpriseMessage.style.position = "fixed";
+        surpriseMessage.style.bottom = "20px";
+        surpriseMessage.style.right = "20px";
+        surpriseMessage.style.backgroundColor = "#ffd1dc";
+        surpriseMessage.style.color = "#333";
+        surpriseMessage.style.padding = "15px 20px";
+        surpriseMessage.style.borderRadius = "20px";
+        surpriseMessage.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.2)";
+        surpriseMessage.style.fontWeight = "bold";
+        surpriseMessage.style.zIndex = "999";
+      
+        // Show the message after the constant delay
+        const showTimeout = setTimeout(() => {
+          document.body.appendChild(surpriseMessage);
+      
+          // Hide it after the hide delay
+          const hideTimeout = setTimeout(() => {
+            surpriseMessage.remove();
+            clearTimeout(hideTimeout);
+          }, HIDE_DELAY);
+      
+        }, MESSAGE_DELAY);
+      </script>
+      
+</body>
+</html>
